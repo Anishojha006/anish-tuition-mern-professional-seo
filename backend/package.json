@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon server.js",
+    "build": "npm --prefix ../frontend install && npm --prefix ../frontend run build && node -e \"const fs=require('fs'); const path=require('path'); const src=path.resolve(__dirname,'../frontend/dist'); const dest=path.resolve(__dirname,'public'); fs.rmSync(dest,{recursive:true,force:true}); fs.mkdirSync(dest,{recursive:true}); for (const entry of fs.readdirSync(src)){ const from=path.join(src,entry); const to=path.join(dest,entry); fs.cpSync(from,to,{recursive:true,force:true}); }\"",
     "start": "node server.js",
     "create-admin": "node create-admin.js"
   },

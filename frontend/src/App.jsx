@@ -20,9 +20,18 @@ import {
   X,
 } from "lucide-react";
 
-const API_URL = import.meta.env.VITE_API_URL || (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
-  ? "http://localhost:5000/api"
-  : `${window.location.origin}/api`);
+const DEFAULT_RENDER_API_URL = "https://anish-tuition-mern-professional-seo.onrender.com/api";
+
+const API_URL = import.meta.env.VITE_API_URL || (() => {
+  const host = window.location.hostname;
+  const isLocalhost = host === "localhost" || host === "127.0.0.1";
+  const isRenderHost = host.includes("onrender.com") || host.includes("render.com");
+
+  if (isLocalhost) return "http://localhost:5000/api";
+  if (isRenderHost) return DEFAULT_RENDER_API_URL;
+
+  return `${window.location.origin}/api`;
+})();
 
 const subjects = [
   ["Mathematics", "Concepts, calculations & problem solving"],
