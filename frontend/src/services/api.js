@@ -1,4 +1,11 @@
-export const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+const getDefaultApiUrl = () => {
+  if (typeof window === "undefined") return "http://localhost:5000/api";
+
+  const isLocalhost = ["localhost", "127.0.0.1"].includes(window.location.hostname);
+  return isLocalhost ? "http://localhost:5000/api" : `${window.location.origin}/api`;
+};
+
+export const API_URL = import.meta.env.VITE_API_URL || getDefaultApiUrl();
 
 export const getAuthToken = () => localStorage.getItem("adminToken");
 

@@ -28,19 +28,55 @@ npm run dev
 ```bash
 cd frontend
 npm install
+copy .env.example .env
 npm run dev
 ```
 
-Set `VITE_API_URL=http://localhost:5000/api` in `frontend/.env` if needed.
+For local development, use:
+```env
+VITE_API_URL=http://localhost:5000/api
+```
+
+For production deployment, leave `VITE_API_URL` unset and the app will automatically use the same-origin `/api` path.
 
 ### MongoDB
 In `backend/.env`:
 ```env
 PORT=5000
 MONGO_URI=mongodb://127.0.0.1:27017/anish_tuition
+JWT_SECRET=replace_with_a_secure_secret
+ADMIN_EMAIL=admin@example.com
+ADMIN_PASSWORD=yourStrongPassword
 ```
 
 If MongoDB is not configured, the API will still start, but enquiries will not be persisted.
+
+## Deployment guide
+
+### Production build
+```bash
+cd frontend
+npm install
+npm run build
+```
+
+The built frontend is served from the backend static files in `backend/public` or `frontend/dist` when the Node app runs. The backend should be deployed with environment variables set in production.
+
+### Required production env vars
+```env
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=replace_with_a_secure_secret
+ADMIN_EMAIL=admin@example.com
+ADMIN_PASSWORD=yourStrongPassword
+```
+
+Then start the backend with:
+```bash
+cd backend
+npm install
+npm start
+```
 
 
 ## SEO improvements included

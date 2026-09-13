@@ -9,6 +9,8 @@ import enquiryRoutes from "./routes/enquiryRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 import analyticsRoutes from "./routes/analyticsRoutes.js";
 import settingsRoutes from "./routes/settingsRoutes.js";
+import dns from "dns";
+dns.setServers(["8.8.8.8","8.8.8.7"]);
 
 dotenv.config();
 

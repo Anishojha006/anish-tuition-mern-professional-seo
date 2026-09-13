@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BarChart3, CircleDollarSign, LayoutDashboard, LogOut, Menu, MonitorSmartphone, TrendingUp, Users, FileText, BarChartHorizontalBig } from "lucide-react";
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer, BarChart, Bar, PieChart, Pie, Cell } from "recharts";
-import { apiFetch } from "../services/api";
+import { API_URL, apiFetch } from "../services/api";
 import { useAdminAuth } from "../context/AdminAuthContext";
 import { Navigate, useNavigate } from "react-router-dom";
 
@@ -57,7 +57,7 @@ const AdminDashboard = () => {
           apiFetch("/admin/analytics/devices"),
           apiFetch("/admin/analytics/pages"),
           apiFetch("/admin/analytics/enquiries"),
-          fetch("http://localhost:5000/api/admin/settings/fees", {
+          fetch(`${API_URL}/admin/settings/fees`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
         ]);
@@ -103,7 +103,7 @@ const AdminDashboard = () => {
     setSavingFees(true);
 
     try {
-      const response = await fetch("http://localhost:5000/api/admin/settings/fees", {
+      const response = await fetch(`${API_URL}/admin/settings/fees`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
