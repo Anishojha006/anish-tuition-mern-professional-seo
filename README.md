@@ -1,0 +1,65 @@
+# Anish Ojha Tuition Classes — MERN
+
+A professional tutoring website for Anish Ojha, built with:
+- Frontend: React + Vite
+- Backend: Node.js + Express
+- Database: MongoDB / Mongoose
+
+## Features
+- Responsive tutor landing page
+- About section with B.Tech and academic performance
+- Subjects/classes section (all subjects up to Class 8)
+- Lucknow-only service area
+- Contact form
+- Backend API for enquiry submissions
+- MongoDB persistence when configured
+
+## Run locally
+
+### Backend
+```bash
+cd backend
+npm install
+copy .env.example .env
+npm run dev
+```
+
+### Frontend
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Set `VITE_API_URL=http://localhost:5000/api` in `frontend/.env` if needed.
+
+### MongoDB
+In `backend/.env`:
+```env
+PORT=5000
+MONGO_URI=mongodb://127.0.0.1:27017/anish_tuition
+```
+
+If MongoDB is not configured, the API will still start, but enquiries will not be persisted.
+
+
+## SEO improvements included
+- Semantic section structure and descriptive page title
+- Meta description and relevant local-search keywords
+- Canonical URL
+- Open Graph and Twitter metadata
+- Schema.org Person structured data
+- robots.txt
+- XML sitemap
+- Mobile responsive layout
+- Click-to-call and email CTAs
+- Local Lucknow service-area language
+
+### Important before deployment
+Replace `https://anishojhatuition.in/` in `frontend/index.html`, `frontend/public/robots.txt`, and `frontend/public/sitemap.xml` with your real domain if you choose a different domain.
+
+For stronger local SEO after deployment:
+1. Verify the site in Google Search Console.
+2. Submit the sitemap.
+3. Create a Google Business Profile if you have an eligible in-person tutoring location/service.
+4. Add genuine service-area details and reviews; do not publish fake reviews.
